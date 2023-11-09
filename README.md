@@ -1,6 +1,6 @@
-# Mathlib Template
+# Lean package with a Mathlib dependency (template repository)
 
-This sets up a basic Lean package with a Mathlib dependency. If you first need to install Lean 4, you can do so by following the instructions on this basic [Lean Template](https://github.com/matematiflo/LeanTemplate) repository.
+This sets up a basic Lean package with a Mathlib dependency. If you first need to install Lean 4, you can do so by following the instructions on this basic [Lean Package](https://github.com/matematiflo/LeanPackage) template repository.
 
 ## Install instructions
 
@@ -9,10 +9,10 @@ This sets up a basic Lean package with a Mathlib dependency. If you first need t
 Clone the present repository.
 
 ```script
-https://github.com/matematiflo/MathlibTemplate.git
+https://github.com/matematiflo/MathlibPackage.git
 ```
 
-### Download the Mathlib binaries
+### Download the compiled Mathlib files
 
 > For the following step, it might be better to not use the terminal from within VS Code (which might generate error messages until the binaries have ben downloaded).
 
@@ -22,7 +22,7 @@ From a terminal, run the command line
 lake exe cache get
 ```
 
-This downloads the Mathlib binaries, so you can avoid building Mathlib locally (which takes a long time). In principle, though, this can be done via the command `lake build`.
+This downloads the compiled Mathlib files, so you can avoid building Mathlib locally (which takes a long time). In principle, though, this can also be done automatically via the command `lake build`.
 
 ### Go to the test file
 
@@ -31,7 +31,7 @@ Go to the file [MathlibTest.lean](MathlibTest.lean) and check that there are no 
 ```lean
 import Mathlib.Algebra.Group.Defs
 
-example (G : Type) [Group G] : (1 : G) * 1 = 1 := by {rfl}
+example [Group G] : (∀ g : G, 1 * g = g) := by {intro g; exact one_mul g}
 
 example : 1 + 1 = 2 := refl 2
 example : 1 + 1 = 2 := refl (1 +1)
@@ -40,13 +40,13 @@ example : 1 + 1 = 2 := rfl  -- same as `refl 2`, with the argument taken implici
 example : 1 = 1 := by {exact refl 1}  -- in tactic mode
 ```
 
-When you position your cursor at the end of the first `example` line (for instance immediately after the `by {rfl}`), you should see the following message in the Lean Infoview panel (which in principle opens automatically to the right).
+When you position your cursor at the end of the first `example` line (for instance immediately after the `by {intro g; exact one_mul g}`), you should see the following message in the Lean Infoview panel (which in principle opens automatically to the right).
 
 > **No goals**
 
-This example gives a proof that, in a group `G`, the neutral element `1` satisfies `1 * 1 = 1`, by definition :-)
+This example gives a proof (taken from Mathlib) that, in a group `G`, the neutral element `1` satisfies, for all `g` in `G`, `1 * g = g` :-)
 
-The other four exampples are just different ways of writing a proof that `1 + 1 = 2`. Again, it holds by definition.
+The other four examples are just different ways of writing a proof that `1 + 1 = 2`. Again, it holds by definition.
 
 ## Troubleshooting and updating
 
@@ -59,3 +59,29 @@ lake exe cache get
 ```
 
 Then close the file `MathlibTest.lean` and open it again.
+
+## Codespaces
+
+If you wish to test the current repo online and without installing anything, you can do so by opening a Codespace (**GitHub account required**). Just click on the button below and follow the instructions underneath it.
+
+[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/matematiflo/MathlibDependency)
+
+- Set the Machine type to `4-core`, and then press `Create codespace`.
+- Wait for Codespaces to launch (it can take up to 5 minutes the first time).
+- Once it is done, you should see a VS Code interface in your browser, wait 2 more minutes until the program is done configuring the Codespace.
+  
+Alternately, you can open a Codespace by clicking on the [Code button](https://github.com/matematiflo/MathlibDependency) of the current repository (possibly slower, though).
+
+If you commit any modified file from within your Codespace, the repo will be forked to your GitHub account and your work will be saved there.
+
+To leave a Codespace, it is recommended that you stop it before closing the browser window:
+
+1. Click on your Codespace name at the bottom-left of the VS Code interface.
+2. Choose `Stop current Codespace` from the list of options.
+3. Wait until the Codespace has stopped to close your browser tab.
+
+To access a Codespace that you have previously created, just go to
+
+> [https://github.com/codespaces](https://github.com/codespaces)
+
+or launch them directly from the Code button of the relevant repository (no setup required this time!).
