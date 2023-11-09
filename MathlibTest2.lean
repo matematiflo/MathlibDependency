@@ -1,6 +1,6 @@
 import Mathlib.Algebra.Group.Defs
 
-example [Group G] : (1 : G) * 1 = 1 := by exact one_mul 1
+example [Group G] : (∀ g : G, 1 * g = g) := by {intro g; exact one_mul g}
 
 example : 1 + 1 = 2 := refl 2
 example : 1 + 1 = 2 := refl (1 +1)
