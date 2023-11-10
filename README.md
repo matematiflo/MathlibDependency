@@ -62,13 +62,9 @@ Then close the file `MathlibTest.lean` and open it again.
 
 ## Codespaces
 
-If you wish to test the current repo online and without installing anything, you can do so by opening a Codespace (**GitHub account required**). Just click on the button below and follow the instructions underneath it.
+If you wish to test the current repo online and without installing anything, you can do so by opening a Codespace (**GitHub account required**). Just click on the button below and click on `Create new codespace`.
 
 [![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/matematiflo/MathlibDependency)
-
-- Set the Machine type to `4-core`, and then press `Create codespace`.
-- Wait for Codespaces to launch (it can take up to 5 minutes the first time).
-- Once it is done, you should see a VS Code interface in your browser, wait 2 more minutes until the program is done configuring the Codespace.
   
 Alternately, you can open a Codespace by clicking on the [Code button](https://github.com/matematiflo/MathlibDependency) of the current repository (possibly slower, though).
 
