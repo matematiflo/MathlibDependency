@@ -31,16 +31,10 @@ Go to the file [MathlibTest.lean](MathlibTest.lean) and check that there are no 
 ```lean
 import Mathlib.Algebra.Group.Defs
 
-example [Group G] : (∀ g : G, 1 * g = g) := by {intro g; exact one_mul g}
-
-example : 1 + 1 = 2 := refl 2
-example : 1 + 1 = 2 := refl (1 +1)
-example : 1 + 1 = 2 := rfl  -- same as `refl 2`, with the argument taken implicitly
-
-example : 1 = 1 := by {exact refl 1}  -- in tactic mode
+example [Group G] : (∀ g : G, 1 * g = g) := by intro g; exact one_mul g
 ```
 
-When you position your cursor at the end of the first `example` line (for instance immediately after the `by {intro g; exact one_mul g}`), you should see the following message in the Lean Infoview panel (which in principle opens automatically to the right).
+When you position your cursor at the end of the first `example` line (for instance immediately after the `by intro g; exact one_mul g`), you should see the following message in the Lean Infoview panel (which in principle opens automatically to the right).
 
 > **No goals**
 
